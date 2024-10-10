@@ -1,5 +1,0 @@
----
-triple:          'arm64-apple-darwin'
-binary-path:     '/Users/daihan/study_C++/network_code/network_code_C-/server'
-relocations:     []
-...
