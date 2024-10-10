@@ -5,6 +5,7 @@
 #include <cstring>
 #include <arpa/inet.h>
 #include <unistd.h>
+#include <fcntl.h>
 #pragma once
 
 using namespace std;
@@ -20,6 +21,15 @@ class Socket{
     void send(const char * buf,int len);
     int recv(char * buf,int len);
     void close();
+
+    //将socket的阻塞IO转换成非阻塞IO
+    bool set_non_blocking();
+
+    //设置发送缓冲区的大小
+    bool set_send_buffer(int size);
+
+    //设置接受缓冲区大小
+    bool set_recv_buffer(int size);
 
     protected:
     string m_ip;

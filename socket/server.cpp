@@ -1,16 +1,18 @@
 #include <iostream>
-#include "socket.h"
+#include "server_socket.h"
 #include <string>
 using namespace std;
 
 int main(){
 
-    Socket server;
+    // Socket server;
 
-    string ip = "127.0.0.1";
-    int port = 8080;
-    server.bind(ip,port);
-    server.listen(1024);
+    // string ip = "127.0.0.1";
+    // int port = 8080;
+    // server.bind(ip,port);
+    // server.listen(1024);
+    
+    server_socekt server("127.0.0.1",8080);
 
     while(true){
         int server_accept = server.accept();
@@ -18,7 +20,7 @@ int main(){
         if(server_accept < 0){ 
            break;
         }
-        
+
         Socket client(server_accept);
 
         char data[1024];

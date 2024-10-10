@@ -101,3 +101,38 @@ void Socket:: close(){
 
 }
 
+//将socket的阻塞IO转换成非阻塞IO
+bool Socket::set_non_blocking(){
+    int flags = fcntl(m_socketfd,F_GETFL,0);
+    if(flags < 0){
+        cout << "此时方法阻塞" << endl;
+        return false;
+    }
+    flags |= O_NONBLOCK;
+    if(fcntl(m_socketfd,F_SETFL,flags) < 0){
+        cout << "设置失败" << endl;
+        return true;
+    }
+    return true;
+}
+
+//设置发送缓冲区的大小
+bool Socket::set_send_buffer(int size){
+    int buff_size = size;
+    if(setsockopt(m_socketfd,SOL_SOCKET,SO_SNDBUF,&buff_size,sizeof(buff_size) < 0)){
+        cout << "设置失败" << endl;
+        return false;
+    }
+    return true;
+}
+
+//设置接受缓冲区大小
+bool Socket::set_recv_buffer(int size){
+    int buff_size = size;
+    if(setsockopt(m_socketfd,SOL_SOCKET,SO_RCVBUF,&buff_size,sizeof(buff_size) < 0)){
+        cout << "设置失败" << endl;
+        return false;
+    }
+    return true;
+}
+
