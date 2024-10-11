@@ -26,7 +26,6 @@ int main(){
     sockaddr.sin_family = AF_INET;
     sockaddr.sin_addr.s_addr = inet_addr(ip.c_str());
     sockaddr.sin_port = htons(port);
-
     if(connect(client_socket,(struct sockaddr *)&sockaddr,sizeof(sockaddr)) < 0){
         cout << "socket connect error:error = " << errno << ",errmsg = " << strerror(errno) << endl;
         return 1;
