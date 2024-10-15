@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 3.14)
 #指定工程名称
 project(hello)
 
-#指定搜索路径
+#指头文件定搜索路径
 include_directories(./)
 
 #自动把src目录下面的cpp文件添加到项目里
