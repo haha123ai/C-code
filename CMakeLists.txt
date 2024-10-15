@@ -20,6 +20,16 @@ include_directories(./)
 
 #add_executable(server ${SOURCES} server.cpp)
 
+
+#指定从某文件创建库文件（静态库）
+#set(MUL_SOURCES ./mul/mul.cpp)
+#add_library(mul STATIC ${MUL_SOURCES}) #静态库名称，静态库，源文件
+#add_library(mul SHREAD ${MUL_SOURCES}) #动态库名称，动态库，源文件
+
+#link_directories(./)#静态库的路径
+#link_libraries(mul)#链接静态库到所有目标
+
+
 add_executable(server practice_socket/ss.cpp)
 add_executable(client practice_socket/cc.cpp)
 
@@ -32,3 +42,6 @@ add_compile_options(-g -Wunused)
 #给指定的目标加上编译选项,更强编译选项设置
 #target_compile_options(server PUBLIC -Wall -Werror)
 
+#target_link_directories(main PUBLIC ./) 
+#静态库链接到指定目标里面 main
+#target_link_libraries(main mul)
